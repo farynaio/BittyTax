@@ -7,10 +7,10 @@ from .etherscan import get_note
 from ..out_record import TransactionOutRecord
 from ..dataparser import DataParser
 
-WALLET = "Arbitrum"
-WORKSHEET_NAME = "ArbiScan"
+WALLET = "Optimism"
+WORKSHEET_NAME = "OptimismScan"
 
-def parse_arbiscan(data_row, _parser, **_kwargs):
+def parse_optimismscan(data_row, _parser, **_kwargs):
     row_dict = data_row.row_dict
     data_row.timestamp = DataParser.parse_timestamp(int(row_dict['UnixTimestamp']))
 
@@ -48,7 +48,7 @@ def parse_arbiscan(data_row, _parser, **_kwargs):
 def get_wallet(address):
     return "%s-%s" % (WALLET, address.lower()[0:TransactionOutRecord.WALLET_ADDR_LEN])
 
-def parse_arbiscan_internal(data_row, _parser, **_kwargs):
+def parse_optimismscan_internal(data_row, _parser, **_kwargs):
     row_dict = data_row.row_dict
     data_row.timestamp = DataParser.parse_timestamp(int(row_dict["UnixTimestamp"]))
 
@@ -74,7 +74,7 @@ def parse_arbiscan_internal(data_row, _parser, **_kwargs):
         )
 
 
-def parse_arbiscan_tokens(data_row, _parser, **kwargs):
+def parse_optimismscan_tokens(data_row, _parser, **kwargs):
     row_dict = data_row.row_dict
     data_row.timestamp = DataParser.parse_timestamp(int(row_dict["UnixTimestamp"]))
 
@@ -110,20 +110,20 @@ def parse_arbiscan_tokens(data_row, _parser, **kwargs):
 
 
 
-arbiscan_txns = DataParser(
+optimismscan_txns = DataParser(
         DataParser.TYPE_EXPLORER,
-        "Arbiscan (Arbitrum Transactions)",
-    ["Txhash","Blockno","UnixTimestamp","DateTime","From","To","ContractAddress","Value_IN(ETH)","Value_OUT(ETH)",None,"TxnFee(ETH)","TxnFee(USD)","Historical $Price/ETH","Status","ErrCode","Method ARB"],
+        "OptimismScan (Optimism Transactions)",
+    ["Txhash","Blockno","UnixTimestamp","DateTime","From","To","ContractAddress","Value_IN(ETH)","Value_OUT(ETH)",None,"TxnFee(ETH)","TxnFee(USD)","Historical $Price/ETH","Status","ErrCode","Method OP"],
         worksheet_name=WORKSHEET_NAME,
-        row_handler=parse_arbiscan)
+        row_handler=parse_optimismscan)
 
 
 
-arbiscan_tokens = DataParser(DataParser.TYPE_EXPLORER,
-           "Arbiscan (Arbitrum Tokens)",
-           ["Txhash","Blockno","UnixTimestamp","DateTime","From","To","TokenValue","USDValueDayOfTx","ContractAddress","TokenName","TokenSymbol ARB"],
+optimismscan_tokens = DataParser(DataParser.TYPE_EXPLORER,
+           "OptimismScan (Optimism Tokens)",
+           ["Txhash","Blockno","UnixTimestamp","DateTime","From","To","TokenValue","USDValueDayOfTx","ContractAddress","TokenName","TokenSymbol OP"],
            worksheet_name=WORKSHEET_NAME,
-           row_handler=parse_arbiscan_tokens)
+           row_handler=parse_optimismscan_tokens)
 
 
 # DataParser(DataParser.TYPE_EXPLORER,
@@ -132,7 +132,7 @@ arbiscan_tokens = DataParser(DataParser.TYPE_EXPLORER,
 #             'Value_IN(ETH)', 'Value_OUT(ETH)', None, 'TxnFee(ETH)', 'TxnFee(USD)',
 #             'Historical $Price/ETH', 'Status', 'ErrCode', 'PrivateNote'],
 #            worksheet_name=WORKSHEET_NAME,
-#            row_handler=parse_arbiscan)
+#            row_handler=parse_optimismscan)
 
 # DataParser(DataParser.TYPE_EXPLORER,
 #            "ArbiScan (Arbitrum Transactions)",
@@ -140,7 +140,7 @@ arbiscan_tokens = DataParser(DataParser.TYPE_EXPLORER,
 #             'Value_IN(ETH)', 'Value_OUT(ETH)', None, 'TxnFee(ETH)', 'TxnFee(USD)',
 #             'Historical $Price/ETH', 'Status', 'ErrCode', 'Method'],
 #            worksheet_name=WORKSHEET_NAME,
-#            row_handler=parse_arbiscan)
+#            row_handler=parse_optimismscan)
 
 # DataParser(DataParser.TYPE_EXPLORER,
 #            "ArbiScan (Arbitrum Transactions)",
@@ -148,16 +148,16 @@ arbiscan_tokens = DataParser(DataParser.TYPE_EXPLORER,
 #             'Value_IN(ETH)', 'Value_OUT(ETH)', None, 'TxnFee(ETH)', 'TxnFee(USD)',
 #             'Historical $Price/ETH', 'Status', 'ErrCode', 'Method', 'PrivateNote'],
 #            worksheet_name=WORKSHEET_NAME,
-#            row_handler=parse_arbiscan)
+#            row_handler=parse_optimismscan)
 
-arbiscan_int = DataParser(
+optimismscan_int = DataParser(
         DataParser.TYPE_EXPLORER,
-        "ArbiScan (Arbitrum Internal Transactions)",
+        "OptimismScan (Optimism Internal Transactions)",
         ['Txhash', 'Blockno', 'UnixTimestamp', 'DateTime', 'ParentTxFrom', 'ParentTxTo',
          'ParentTxETH_Value', 'From', 'TxTo', 'ContractAddress', 'Value_IN(ETH)',
-         'Value_OUT(ETH)', None, 'Historical $Price/ETH', 'Status', 'ErrCode', 'Type ARB'],
+         'Value_OUT(ETH)', None, 'Historical $Price/ETH', 'Status', 'ErrCode', 'Type OP'],
         worksheet_name=WORKSHEET_NAME,
-        row_handler=parse_arbiscan_internal)
+        row_handler=parse_optimismscan_internal)
 
 # DataParser(DataParser.TYPE_EXPLORER,
 #            "ArbiScan (Arbitrum Internal Transactions)",
@@ -166,7 +166,7 @@ arbiscan_int = DataParser(
 #             'Value_OUT(ETH)', None, 'Historical $Price/ETH', 'Status', 'ErrCode', 'Type',
 #             'PrivateNote'],
 #            worksheet_name=WORKSHEET_NAME,
-#            row_handler=parse_arbiscan_internal)
+#            row_handler=parse_optimismscan_internal)
 
 # Same header as Etherscan
 #DataParser(DataParser.TYPE_EXPLORER,
