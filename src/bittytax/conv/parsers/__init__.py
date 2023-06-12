@@ -77,6 +77,7 @@ from . import (
     near,
     nexo,
     okx,
+    optimism,
     paxful,
     paypal,
     poloniex,
