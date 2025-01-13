@@ -852,6 +852,24 @@ DataParser(
     row_handler=parse_kucoin_deposits_withdrawals_crypto_v2,
 )
 
+DataParser(
+    ParserType.EXCHANGE,
+    "KuCoin Deposits",
+    [
+        "UID",
+        "Account Type",
+        lambda c: re.match(r"(^Time\((UTC[-+]\d{2}:\d{2})\))", c),
+        "Coin",
+        "Amount",
+        "Fee",
+        "Transfer Network",
+        "Status",
+        "Remarks",
+    ],
+    worksheet_name="KuCoin D,W",
+    row_handler=parse_kucoin_deposits_withdrawals_v2,
+)
+
 # Deposit_Withdrawal History_Deposit History (Bundle)
 DataParser(
     ParserType.EXCHANGE,
@@ -908,6 +926,25 @@ DataParser(
     ],
     worksheet_name="KuCoin D,W",
     row_handler=parse_kucoin_deposits_withdrawals_crypto_v2,
+)
+
+DataParser(
+    ParserType.EXCHANGE,
+    "KuCoin Withdrawals",
+    [
+        "UID",
+        "Account Type",
+        lambda c: re.match(r"(^Time\((UTC[-+]\d{2}:\d{2})\))", c),
+        "Coin",
+        "Amount",
+        "Fee",
+        "Withdrawal Address/Account",
+        "Transfer Network",
+        "Status",
+        "Remarks",
+    ],
+    worksheet_name="KuCoin D,W",
+    row_handler=parse_kucoin_deposits_withdrawals_v2,
 )
 
 # Deposit_Withdrawal History_Withdrawal Record (Bundle)
@@ -1043,6 +1080,30 @@ DataParser(
         "Filled Volume",
         "Filled Volume (USDT)",
         lambda c: re.match(r"(^Filled Time\((UTC|UTC[-+]\d{2}:\d{2})\))", c),
+        "Fee",
+        "Tax",
+        "Maker/Taker",
+        "Fee Currency",
+    ],
+    worksheet_name="KuCoin T",
+    row_handler=parse_kucoin_trades_v5,
+)
+
+DataParser(
+    ParserType.EXCHANGE,
+    "KuCoin Trades",
+    [
+        "UID",
+        "Account Type",
+        "Order ID",
+        "Symbol",
+        "Side",
+        "Order Type",
+        "Avg. Filled Price",
+        "Filled Amount",
+        "Filled Volume",
+        "Filled Volume (USDT)",
+        lambda c: re.match(r"(^Filled Time\((UTC[-+]\d{2}:\d{2})\))", c),
         "Fee",
         "Tax",
         "Maker/Taker",
