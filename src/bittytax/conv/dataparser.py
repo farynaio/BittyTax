@@ -76,9 +76,15 @@ class AllHandler2(Protocol):  # pylint: disable=too-few-public-methods
 class ParserArgs(TypedDict):  # pylint: disable=too-few-public-methods, too-many-ancestors
     filename: NotRequired[str]
     worksheet: NotRequired[str]
+<<<<<<< HEAD
     unconfirmed: NotRequired[bool]
     cryptoasset: NotRequired[str]
     dt_config: NotRequired["DtConfig"]
+=======
+    unconfirmed: bool
+    cryptoasset: str
+    address: str
+>>>>>>> 119f29b (Added wallet address to parser)
 
 
 class DataParser:  # pylint: disable=too-many-instance-attributes
