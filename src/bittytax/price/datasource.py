@@ -57,7 +57,7 @@ class DataSourceBase:
     TIME_OUT = 30
 
     def __init__(self) -> None:
-        self.headers = {"user-agent": self.user_agent}
+        self.headers = {"user-agent": self.USER_AGENT}
         self.assets: dict[assetsymbol, dssymboltoassetdata] = {}
         self.ids: dict[assetid, dsidtoassetdata] = {}
         self.prices = self._load_prices()
@@ -90,7 +90,7 @@ class DataSourceBase:
             print(f"{Fore.YELLOW}price: GET {url} {list(self.headers.keys())}")
 
         while True:
-            response = requests.get(url, headers={**self.headers, "User-Agent": self.USER_AGENT }, timeout=self.TIME_OUT)
+            response = requests.get(url, headers=self.headers, timeout=self.TIME_OUT)
 
 <<<<<<< HEAD
         if response.status_code in [401, 402, 403, 429, 500, 502, 503, 504]:
@@ -98,7 +98,7 @@ class DataSourceBase:
 =======
             if response.status_code in [401, 402, 403, 429, 502, 503, 504]:
                 try:
-                response.raise_for_status()
+                    response.raise_for_status()
                 except:
                     pass
                 time.sleep(repeat_after)
