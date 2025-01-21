@@ -55,11 +55,15 @@ CoinDesk have deprecated their price API. You will need to remove it from your `
 - Accounting tool: in PDF reports only word-wrap for asset-table and total-table.
 - KuCoin parser: Fee can be empty for deposits and withdrawals.
 <<<<<<< HEAD
+<<<<<<< HEAD
 - KuCoin parser: UTC can be without an offset.
 - Coinbase parser: fixed advanced trades without the "at" exchange rate specified. ([#458](https://github.com/BittyTax/BittyTax/issues/458))
 - Accounting tool: integrity check difference should match transfers mismatch.
 =======
 >>>>>>> 0f43c5d (KuCoin parser: Fee can be empty for deposits and withdrawals)
+=======
+- KuCoin parser: UTC can be without an offset.
+>>>>>>> 8ef3666 (KuCoin parser: UTC can be without an offset)
 ### Added
 - Accounting tool: new PDF report format.
 - Config: added classic_report parameter to switch to legacy PDF report format.

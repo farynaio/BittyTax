@@ -571,7 +571,13 @@ def _get_asset_from_symbol(symbol: str) -> str:
 def parse_kucoin_account_history(
     data_rows: List["DataRow"], parser: DataParser, **_kwargs: Unpack[ParserArgs]
 ) -> None:
+<<<<<<< HEAD
     tx_times: Dict[datetime, List["DataRow"]] = {}
+=======
+    if "History_Funding" not in kwargs["filename"]:
+        # Only the Funding Account can contain airdrops
+        raise DataFormatNotSupported(kwargs["filename"])
+>>>>>>> 8ef3666 (KuCoin parser: UTC can be without an offset)
 
     for dr in data_rows:
         timestamp_hdr = parser.args[0].group(1)
@@ -858,7 +864,7 @@ DataParser(
     [
         "UID",
         "Account Type",
-        lambda c: re.match(r"(^Time\((UTC[-+]\d{2}:\d{2})\))", c),
+        lambda c: re.match(r"(^Time\((UTC|UTC[-+]\d{2}:\d{2})\))", c),
         "Coin",
         "Amount",
         "Fee",
@@ -934,7 +940,7 @@ DataParser(
     [
         "UID",
         "Account Type",
-        lambda c: re.match(r"(^Time\((UTC[-+]\d{2}:\d{2})\))", c),
+        lambda c: re.match(r"(^Time\((UTC|UTC[-+]\d{2}:\d{2})\))", c),
         "Coin",
         "Amount",
         "Fee",
@@ -1044,7 +1050,11 @@ DataParser(
         "Type",  # New field
     ],
     worksheet_name="KuCoin A",
+<<<<<<< HEAD
     all_handler=parse_kucoin_account_history,
+=======
+    row_handler=parse_kucoin_account_history_funding,
+>>>>>>> 8ef3666 (KuCoin parser: UTC can be without an offset)
 )
 
 # Account History_Funding Account (Bundle)
@@ -1103,7 +1113,7 @@ DataParser(
         "Filled Amount",
         "Filled Volume",
         "Filled Volume (USDT)",
-        lambda c: re.match(r"(^Filled Time\((UTC[-+]\d{2}:\d{2})\))", c),
+        lambda c: re.match(r"(^Filled Time\((UTC|UTC[-+]\d{2}:\d{2})\))", c),
         "Fee",
         "Tax",
         "Maker/Taker",
