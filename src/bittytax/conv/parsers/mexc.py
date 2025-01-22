@@ -115,7 +115,7 @@ def parse_mexc_trades_v1(
     row_dict = data_row.row_dict
     data_row.timestamp = DataParser.parse_timestamp(row_dict["Time"])
 
-    if row_dict["Side"] == "BUY":
+    if row_dict["Side"] == "Buy":
         data_row.t_record = TransactionOutRecord(
             TrType.TRADE,
             data_row.timestamp,
@@ -127,7 +127,7 @@ def parse_mexc_trades_v1(
             fee_asset=row_dict["Pairs"].split("_")[0],
             wallet=WALLET,
         )
-    elif row_dict["Side"] == "SELL":
+    elif row_dict["Side"] == "Sell":
         data_row.t_record = TransactionOutRecord(
             TrType.TRADE,
             data_row.timestamp,
