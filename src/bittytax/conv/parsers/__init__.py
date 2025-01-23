@@ -74,6 +74,7 @@ from . import (
     # kusama,
     ledgerlive,
     liquid,
+    mode,
     moonscan,
     mercatox,
     mexc,
