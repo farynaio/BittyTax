@@ -366,7 +366,10 @@ def _close_position(
             note=instrument,
         )
         data_rows.append(dup_data_row)
+<<<<<<< HEAD
 
+=======
+>>>>>>> d24cc8c (MEXC parser: various updates)
 
 DataParser(
     ParserType.EXCHANGE,
@@ -405,6 +408,29 @@ DataParser(
     row_handler=parse_mexc_withdrawals,
 )
 
+
+# Export Order History
+DataParser(
+    ParserType.EXCHANGE,
+    "MEXC Trades",
+    [
+        "Pairs",
+        "Time",
+        "Type",
+        "Direction",
+        "Average Filled Price",
+        "Order Price",
+        "Filled Quantity",
+        "Order Quantity",
+        "Order Amount",
+        "Status",
+    ],
+    worksheet_name="MEXC T",
+    row_handler=parse_mexc_trades_v2,
+)
+
+
+# Export Trade History, this is preferred as it contains fees
 DataParser(
     ParserType.EXCHANGE,
     "MEXC Withdrawals",
@@ -471,6 +497,7 @@ DataParser(
     ["Pairs", "Time", "Side", "Filled Price", "Executed Amount", "Total", "Fee", "Role"],
     worksheet_name="MEXC T",
     row_handler=parse_mexc_trades_v1,
+<<<<<<< HEAD
 )
 
 DataParser(
@@ -498,6 +525,8 @@ DataParser(
     ],
     worksheet_name="MEXC F",
     all_handler=parse_mexc_futures,
+=======
+>>>>>>> d24cc8c (MEXC parser: various updates)
 )
 
 DataParser(
