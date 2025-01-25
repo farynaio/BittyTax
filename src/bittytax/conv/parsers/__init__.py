@@ -63,7 +63,11 @@ from . import (
     hitbtc,
     hotbit,
     ii,
+<<<<<<< HEAD
     jupiter,
+=======
+    kavascan,
+>>>>>>> 0123c3c (added kavascan)
     kinesis,
     koinly,
     kraken,
