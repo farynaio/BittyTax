@@ -99,6 +99,7 @@ from . import (
     snowtrace,
     solana,
     staketax,
+    starknet,
     subscan,
     swissborg,
     tradeogre,
