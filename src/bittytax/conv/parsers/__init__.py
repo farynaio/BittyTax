@@ -4,6 +4,7 @@ from . import (
     aptoscan,
     # arbiscan,
     arweave,
+    avascan,
     barclays,
     # bifrost,
     binance,
@@ -95,8 +96,12 @@ from . import (
     qtwallet,
     revolut,
     robinhood,
+<<<<<<< HEAD
     sfox,
     snowtrace,
+=======
+    # snowtrace,
+>>>>>>> 812152b (avalanche: introduce avascan parser)
     solana,
     staketax,
     starknet,
